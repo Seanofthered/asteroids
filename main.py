@@ -49,19 +49,10 @@ def main():
                 sys.exit()
         
 
-        destroyed_asteroids = []
-        destroyed_shots = []
-        for asteroid in asteroids:
             for shot in shots:
-                if shot.collision_check(asteroid):
-                    destroyed_shots.append(shot)
-                    destroyed_asteroids.append(asteroid)
-        
-        for shot in destroyed_shots:
-            shot.kill()
-        
-        for asteroid in destroyed_asteroids:
-            asteroid.kill()
+                if asteroid.collision_check(shot):
+                    shot.kill()
+                    asteroid.split()
 
 
         pygame.display.flip()
